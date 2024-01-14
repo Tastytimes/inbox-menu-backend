@@ -147,4 +147,16 @@ const resetUserPasswordController = async (req: Request, res: Response) => {
     return successResponse(200, "User is successfully deleted", updateUser, res);
 
 }
+
+
+
+//fetch all seller wrt isacive show item
+
+
+
+//create order from user
+
+
+//fetch all orders category for admin
+
 export { registration, login, getAllUsersController, getUserByIdController, updateUserByIdController, deleteUserByIdController, resetUserPasswordController };

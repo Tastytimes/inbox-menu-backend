@@ -72,6 +72,8 @@ const updateInventory = async (req: Request, res: Response) => {
   }
 };
 
+
+//seller fetch
 const getAllInvForAdmin = async (req: Request, res: Response) => {
   try {
     const data: any = req as CustomRequest;
@@ -85,6 +87,10 @@ const getAllInvForAdmin = async (req: Request, res: Response) => {
     return badRequestError("something went wrong!", err, res);
   }
 };
+
+//according to seller id we have to update inbox price
+
+
 
 export {
   createInvController,
