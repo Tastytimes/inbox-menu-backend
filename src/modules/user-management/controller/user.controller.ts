@@ -147,39 +147,32 @@ const deleteUserByIdController = async (req: Request, res: Response) => {
   }
 };
 
-<<<<<<< HEAD
 const resetUserPasswordController = async (req: Request, res: Response) => {
-  const data: any = req as CustomRequest;
-  const role: string = data.token.role;
-  const { email }: { email: string } = req.body;
-  if (role !== "admin")
-    return badRequestError("dont have enough access", {}, res);
-  const details = await Users.findOne({ email: email });
-  if (!details) return badRequestError("User not found", {}, res);
-  const passwordGeneration = randomBytes(4).toString("hex");
-  console.log(passwordGeneration);
-  const password = await Password.toHash(passwordGeneration);
-  const updateUser = await Users.findByIdAndUpdate(
-    { _id: details.id },
-    {
-      $set: {
-        password: password,
-      },
-    }
-  );
-  return successResponse(200, "User is successfully deleted", updateUser, res);
+  try {
+    const data: any = req as CustomRequest;
+    const role: string = data.token.role;
+    const { email }: { email: string } = req.body;
+    if (role !== "admin")
+      return badRequestError("dont have enough access", {}, res);
+    const details = await Users.findOne({ email: email });
+    if (!details) return badRequestError("User not found", {}, res);
+    const passwordGeneration = randomBytes(4).toString("hex");
+    console.log(passwordGeneration);
+    const password = await Password.toHash(passwordGeneration);
+    const updateUser = await Users.findByIdAndUpdate(
+      { _id: details.id },
+      {
+        $set: {
+          password: password,
+        },
+      }
+    );
+    return successResponse(200, "User is successfully deleted", updateUser, res);
+  } catch (err) {
+    return badRequestError("Something went wrong!", err, res);
+  }
 };
-export {
-  registration,
-  login,
-  getAllUsersController,
-  getUserByIdController,
-  updateUserByIdController,
-  deleteUserByIdController,
-  resetUserPasswordController,
-};
-=======
-}
+
 
 
 
@@ -192,5 +185,13 @@ export {
 
 //fetch all orders category for admin
 
-export { registration, login, getAllUsersController, getUserByIdController, updateUserByIdController, deleteUserByIdController, resetUserPasswordController };
->>>>>>> 12852c04c632a7b469ecaf2ee64881a071a069d7
+export {
+  registration,
+  login,
+  getAllUsersController,
+  getUserByIdController,
+  updateUserByIdController,
+  deleteUserByIdController,
+  resetUserPasswordController,
+};
+
