@@ -147,6 +147,7 @@ const deleteUserByIdController = async (req: Request, res: Response) => {
   }
 };
 
+<<<<<<< HEAD
 const resetUserPasswordController = async (req: Request, res: Response) => {
   const data: any = req as CustomRequest;
   const role: string = data.token.role;
@@ -177,3 +178,19 @@ export {
   deleteUserByIdController,
   resetUserPasswordController,
 };
+=======
+}
+
+
+
+//fetch all seller wrt isacive show item
+
+
+
+//create order from user
+
+
+//fetch all orders category for admin
+
+export { registration, login, getAllUsersController, getUserByIdController, updateUserByIdController, deleteUserByIdController, resetUserPasswordController };
+>>>>>>> 12852c04c632a7b469ecaf2ee64881a071a069d7
